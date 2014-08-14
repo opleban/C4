@@ -26,21 +26,21 @@ function Board (height,width) {
 Board.prototype = {
   addChip: function (column) {
     for (i=(this.height-1);i>0;i--) {
-      if this.cells[i][column].color == ""
-        this.cells[i][column].color = this.currentColor
+      if (this.cells[i][column].color == "") {
+        this.cells[i][column].color = this.currentColor;
+        return ; }
     }
+    return null;
+  }
 
-  }
-  findOpenSpace: function (column){
-    for (i=(this.height-1);i>0;i--) {
-      this.cells[i][column]
-    }
-  }
+//Controller
+
+View.button.on("click",function () {
+  var square_obj = board.addChip(this.column_id) || alert("You cannot add a chip here. The column is full.")
+  if board.status
+    View.display_win(square_obj.color)
+  else {
+    Board.currentColor = opposite color;
+    View.updateBoard(square_obj.id,square_obj.color); }
+
 }
-
-// var findOpenSpace =function(column){
-//   for (var row = board.length-1; row >= 0; --row ){
-//     return board[row][column] if board[row][column].color === null
-//   }
-//   return false;
-// }
