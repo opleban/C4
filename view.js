@@ -5,19 +5,21 @@ View = {
   },
 
   displayChangeColor: function(color){
-    alert("It's " + color + "'s turn!");
+    $("#message").html("It's " + color + "'s turn!");
   },
 
-  dislay_win: function(color){
-    alert(color + "wins!")
+  displayWin: function(color){
+    $("#message").html(color + " wins!");
   },
 
-  buttons: function(){
-    return $(button);
+  clear: function() {
+    $("td").removeClass("red").removeClass("black");
   },
+
+  newGameButton: $("#new_game"),
+  columnButtons: $("nav button"),
 
   displayColumnFull: function(){
-    alert("Illegal move: that column is already full!")
-
+    $("#message").html("Illegal move: that column is already full!");
   }
 }
