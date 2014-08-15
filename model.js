@@ -7,10 +7,10 @@ function Square(id) {
 function Board (height,width) {
   this.height = height;
   this.width = width;
-  this.currentColor = "";
+  this.currentColor = "red";
 
   //Creates 2D Array of Blanks called cells
-  var this.cells = new Array(height);
+  this.cells = new Array(height);
   for (var i=0;i<height;i++) {
     this.cells[i] = new Array (width);
   }
@@ -26,7 +26,7 @@ function Board (height,width) {
 
 Board.prototype = {
   addChip: function (column) {
-    for (i=(this.height-1);i>0;i--) {
+    for (i=(this.height-1);i>=0;i--) {
       if (this.cells[i][column].color == "") {
         this.cells[i][column].color = this.currentColor;
         return this.cells[i][column]; }
@@ -43,7 +43,7 @@ Board.prototype = {
   },
 
   switchPlayerColor: function () {
-    if board.currentColor == "red" { board.currentColor = "black"; }
+    if(board.currentColor == "red") { board.currentColor = "black"; }
     else {board.currentColor = "red"; }
   },
 }

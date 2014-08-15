@@ -1,6 +1,9 @@
 View = {
 
   updateBoard: function(square_id, color){
+    console.log("made it to update Board")
+    console.log(square_id)
+    console.log(color)
     $('#'+square_id).addClass(color);
   },
 
@@ -8,13 +11,11 @@ View = {
     alert("It's " + color + "'s turn!");
   },
 
-  dislay_win: function(color){
+  displayWin: function(color){
     alert(color + "wins!")
   },
 
-  buttons: function(){
-    return $(button);
-  },
+  buttons: $("button"),
 
   displayColumnFull: function(){
     alert("Illegal move: that column is already full!")
