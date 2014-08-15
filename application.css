@@ -1,10 +1,69 @@
 /*Melissa added these*/
+.col_c4{
+  position: absolute;
+  height: 855px;
+  width: 30px;
+  top: 130px;
+  left: 190px;
+}
+#col2{
+  left: 320px;
+}
+#col3{
+  left: 615px;
+}
+#col4{
+  left: 750px;
+}
+#col5{
+  left: 885px;
+}
+#col6{
+  left: 1020px;
+}
+#col7{
+  left: 1155px;
+}
+#col8{
+  left: 460px;
+}
+.row_c4{
+  position: relative;
+  width: 985px;
+  height: 30px;
+  left: 190px;
+  border-radius: 10px;
+}
+#row1{
+  top: 120px;
+  left: 190px;
+}
+#row2{
+  top: 220px;
+}
+#row3{
+  top: 320px;
+}
+#row4{
+  top: 440px;
+}
+#row5{
+  top: 540px;
+}
+#row6{
+  top: 650px;
+}
+#row7{
+  top: 750px;
+
+}
 
 #message {
   position: absolute;
   left: 30px;
   top:20px;
   font-size:40px;
+  color: orange;
 
 }
 
@@ -31,13 +90,21 @@
 
 td {
   border: 3px solid black;
-  height: 90px;
-  width: 90px;
+  height: 130px;
+  width: 130px;
+  position: relative;
 }
 
+img{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  height: 80px;
+  width: 80px;
+}
 #table_button{
   position: absolute;
-  left: 400px;
+  left: 200px;
   top: 100px;
 }
 
@@ -48,7 +115,7 @@ left: 80px;
 
 
 nav button{
-  width: 90px;
+  width: 130px;
   height: 30px;
   margin: 0 11px 10px 0;
   border-radius: 5px;
@@ -62,3 +129,12 @@ nav button{
   background-color: black;
 }
 
+body{
+  background-image: url("http://www.greekk.com/sites/default/files/imagecache/product_full/201307/c4-bomb-alarm-clock.7700-35062.jpg")
+}
+
+#game_over{
+  position: absolute;
+  top: 900px;
+  left: 300px;
+}

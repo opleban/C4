@@ -72,8 +72,9 @@ View.computerButton.on("click",function() {
 View.newGameButton.on("click",function() {
   board.clear();
   View.clear();
-  var dumbComputerPlaying = false;
-});
+  dumbComputerPlaying = false;
+  View.enablePlay();
+})
 
 
 // $(document).ready(){ initialize }
