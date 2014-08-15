@@ -4,18 +4,18 @@ View = {
     $('#'+square_id).addClass(color);
   },
 
-  displayChangeColor: function(color){
+  displayChangePlayer: function(color){
     $("#message").html("It's " + color + "'s turn!");
   },
 
   displayWin: function(color){
-    $("#message").html(color + " wins!");
+    $("#message").html(color + " win(s)!");
   },
 
   clear: function() {
     $("td").removeClass("red").removeClass("black");
   },
-
+  computerButton: $("#play_computer"),
   newGameButton: $("#new_game"),
   columnButtons: $("nav button"),
 

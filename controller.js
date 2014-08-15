@@ -1,26 +1,79 @@
 //Controller
+
+// function Controller(){
+//   this.board = new Board(6,7);
+//   this.smartComputerPlaying = false;
+//   this.dumbComputerPlaying = false;
+//   this.addListeners = function {
+//     View.columnButtons.on("click",function ())
+//   }
+//   this.addChipModelViewActions = function {
+
+//   }
+
+//   this.dumbComputerActions = function {
+
+//   }
+
+// }
+
 var board = new Board(6,7);
+var dumbComputerPlaying = false;
+
+
+function computerMoveLogic () {
+  do {
+    var random_col_num = Math.floor(Math.random() * board.width)
+    var computer_added_chip = board.addChip(random_col_num);
+  } while (!computer_added_chip)
+
+  View.updateBoard(computer_added_chip.id,computer_added_chip.color);
+
+  if(board.checkWin(computer_added_chip)) {
+    View.displayWin("computer");
+  }
+  else {
+    board.switchPlayerColor();
+    View.displayChangePlayer("your");
+  }
+}
 
 View.columnButtons.on("click",function () {
-
   var col_id = $(this).attr("id").match(/\d+/);
   var added_chip = board.addChip(col_id);
   if(!added_chip) {
-    View.displayColumnFull(); }
+    View.displayColumnFull();
+  }
   else {
     View.updateBoard(added_chip.id,added_chip.color);
     if(board.checkWin(added_chip)) {
-      View.displayWin(added_chip.color);}
+      if (dumbComputerPlaying) {
+        View.displayWin("you");}
+      else {
+        View.displayWin(board.currentColor);}
+    }
     else {
       board.switchPlayerColor();
-      View.displayChangeColor(board.currentColor); }
+      if(dumbComputerPlaying) {
+        View.displayChangePlayer("computer");
+         setTimeout(function(){computerMoveLogic()},1000);
+      }
+      else {
+        View.displayChangePlayer(board.currentColor); }
+    }
   }
+});
+
+View.computerButton.on("click",function() {
+  View.displayChangePlayer("your");
+  dumbComputerPlaying = true;
 });
 
 View.newGameButton.on("click",function() {
   board.clear();
   View.clear();
-})
+  var dumbComputerPlaying = false;
+});
 
 
 // $(document).ready(){ initialize }

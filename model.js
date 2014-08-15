@@ -43,13 +43,37 @@ Board.prototype = {
     }
   },
 
+
   indexOf: function(id) {
     return [Math.floor(id/this.width),id%this.width];
   },
 
   switchPlayerColor: function () {
-    if(board.currentColor == "red") { board.currentColor = "black"; }
-    else {board.currentColor = "red"; }
+    if(this.currentColor == "red") {this.currentColor = "black"; }
+    else {this.currentColor = "red"; }
+  },
+
+  smartComputerPlay: function(added_chip) {
+    coords = this.indexOf(added_chip);
+    row_num = coords[0];
+    col_num = coords[1];
+
+    //Check Row Right
+
+    //Check Row Left
+
+    //Check Row Sides
+
+    //Check Column Up
+
+    //Check Column Down
+
+    //Check Up Down
+
+    //Check Diagonal Right
+
+    //Check Diagoal Left
+
   },
 
   sameColor: function(row, col, chip) {
