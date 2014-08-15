@@ -1,7 +1,7 @@
 //Controller
 var board = new Board(6,7);
 
-View.buttons.on("click",function () {
+View.columnButtons.on("click",function () {
 
   var col_id = $(this).attr("id").match(/\d+/);
   var added_chip = board.addChip(col_id);
@@ -9,13 +9,18 @@ View.buttons.on("click",function () {
     View.displayColumnFull(); }
   else {
     View.updateBoard(added_chip.id,added_chip.color);
-    if(board.won_status(added_chip)) {
-      View.displayWin(added_chip.color); }
+    if(board.checkWin(added_chip)) {
+      View.displayWin(added_chip.color);}
     else {
       board.switchPlayerColor();
       View.displayChangeColor(board.currentColor); }
   }
 });
+
+View.newGameButton.on("click",function() {
+  board.clear();
+  View.clear();
+})
 
 
 // $(document).ready(){ initialize }
