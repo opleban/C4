@@ -10,7 +10,9 @@ View.columnButtons.on("click",function () {
   else {
     View.updateBoard(added_chip.id,added_chip.color);
     if(board.checkWin(added_chip)) {
-      View.displayWin(added_chip.color);}
+      View.displayWin(added_chip.color);
+      View.disablePlay();
+    }
     else {
       board.switchPlayerColor();
       View.displayChangeColor(board.currentColor); }
@@ -20,6 +22,7 @@ View.columnButtons.on("click",function () {
 View.newGameButton.on("click",function() {
   board.clear();
   View.clear();
+  View.enablePlay();
 })
 
 
