@@ -12,6 +12,14 @@ View = {
     $("#message").html(color + " wins!");
   },
 
+  disablePlay: function() {
+    $("[id*='col']").attr("disabled", "disabled");
+  },
+
+  enablePlay: function() {
+    $("[id*='col']").removeAttr("disabled");
+  },
+
   clear: function() {
     $("td").removeClass("red").removeClass("black");
   },
