@@ -1,21 +1,3 @@
-//Controller
-
-// function Controller(){
-//   this.board = new Board(6,7);
-//   this.smartComputerPlaying = false;
-//   this.dumbComputerPlaying = false;
-//   this.addListeners = function {
-//     View.columnButtons.on("click",function ())
-//   }
-//   this.addChipModelViewActions = function {
-
-//   }
-
-//   this.dumbComputerActions = function {
-
-//   }
-
-// }
 
 var board = new Board(6,7);
 var dumbComputerPlaying = false;
@@ -35,33 +17,43 @@ function computerMoveLogic () {
   else {
     board.switchPlayerColor();
     View.displayChangePlayer("your");
+    Timer.countdown(5);
   }
 }
 
-View.columnButtons.on("click",function () {
-  var col_id = $(this).attr("id").match(/\d+/);
-  var added_chip = board.addChip(col_id);
-  if(!added_chip) {
-    View.displayColumnFull();
-  }
-  else {
-    View.updateBoard(added_chip.id,added_chip.color);
-    if(board.checkWin(added_chip)) {
-      if (dumbComputerPlaying) {
-        View.displayWin("you");}
-      else {
-        View.displayWin(board.currentColor);}
+View.startGameButton.on("click", function(){
+  View.disableStart();
+  View.displayChangePlayer(board.currentColor);
+  Timer.countdown(5);
+
+  View.columnButtons.on("click",function () {
+    Timer.breakCountdown();
+    var col_id = $(this).attr("id").match(/\d+/);
+    var added_chip = board.addChip(col_id);
+    if(!added_chip) {
+      View.displayColumnFull();
     }
     else {
-      board.switchPlayerColor();
-      if(dumbComputerPlaying) {
-        View.displayChangePlayer("computer");
-         setTimeout(function(){computerMoveLogic()},1000);
+      View.updateBoard(added_chip.id,added_chip.color);
+      if(board.checkWin(added_chip)) {
+        if (dumbComputerPlaying) {
+          View.displayWin("you");}
+        else {
+          View.displayWin(board.currentColor);}
       }
       else {
-        View.displayChangePlayer(board.currentColor); }
+        board.switchPlayerColor();
+        if(dumbComputerPlaying) {
+          View.displayChangePlayer("computer");
+           setTimeout(function(){computerMoveLogic()},1000);
+        }
+        else {
+          View.displayChangePlayer(board.currentColor);
+          Timer.countdown(5);
+        }
+      }
     }
-  }
+  });
 });
 
 View.computerButton.on("click",function() {
@@ -74,6 +66,7 @@ View.newGameButton.on("click",function() {
   View.clear();
   dumbComputerPlaying = false;
   View.enablePlay();
+  Timer.countdown(5);
 })
 
 
@@ -90,6 +83,24 @@ View.newGameButton.on("click",function() {
 //   this.view = view
 // }
 
+//Controller
+
+// function Controller(){
+//   this.board = new Board(6,7);
+//   this.smartComputerPlaying = false;
+//   this.dumbComputerPlaying = false;
+//   this.addListeners = function {
+//     View.columnButtons.on("click",function ())
+//   }
+//   this.addChipModelViewActions = function {
+
+//   }
+
+//   this.dumbComputerActions = function {
+
+//   }
+
+// }
 
 
 

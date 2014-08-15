@@ -53,29 +53,6 @@ Board.prototype = {
     else {this.currentColor = "red"; }
   },
 
-  smartComputerPlay: function(added_chip) {
-    coords = this.indexOf(added_chip);
-    row_num = coords[0];
-    col_num = coords[1];
-
-    //Check Row Right
-
-    //Check Row Left
-
-    //Check Row Sides
-
-    //Check Column Up
-
-    //Check Column Down
-
-    //Check Up Down
-
-    //Check Diagonal Right
-
-    //Check Diagoal Left
-
-  },
-
   sameColor: function(row, col, chip) {
     return this.cells[row][col].color === chip.color;
   },
