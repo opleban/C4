@@ -1,6 +1,7 @@
 
-function Square() {
-  this.color = ""
+function Square(id) {
+  this.id = id;
+  this.color = "";
 }
 
 function Board (height,width) {
@@ -8,40 +9,77 @@ function Board (height,width) {
   this.width = width;
   this.currentColor = "";
 
-  var outer_array_of_rows = new Array(height);
-  var inner_array_of_blanks = new Array(width);
-  // Couldn't get the f***ing map function to work so do it with loops below
-  // inner_array_of_blanks.map(function(val,index,array) {array[index] = new Square();});
-  // this.cells = outer_array_of_rows.map(function() {return inner_array_of_square_objs});
-  var inner_array_of_square_objs = new Array(width);
-  for (var i=0;i<inner_array_of_blanks.length;i++) {
-    inner_array_of_square_objs[i] = new Square();
+  //Creates 2D Array of Blanks called cells
+  var this.cells = new Array(height);
+  for (var i=0;i<height;i++) {
+    this.cells[i] = new Array (width);
   }
-  for (var i=0;i<outer_array_of_rows.length;i++) {
-    outer_array_of_rows[i] = inner_array_of_square_objs;
+  //Fills cells with Square Objects
+  for(i=0;i<height;i++) {
+    for (j=0;j<width;j++) {
+      id = i*this.width+j;
+      this.cells[i][j] = new Square(id);
+    }
   }
-  this.cells = outer_array_of_rows;
+
 }
 
 Board.prototype = {
   addChip: function (column) {
-<<<<<<< HEAD
     for (i=(this.height-1);i>0;i--) {
       if (this.cells[i][column].color == "") {
         this.cells[i][column].color = this.currentColor;
-        return ; }
+        return this.cells[i][column]; }
     }
     return null;
-  }
+  },
+
+  won_status: function (added_chip) {
+    return false;
+  },
+
+  indexOf: function(id) {
+    return [id/this.width,id%this.width];
+  },
+
+  switchPlayerColor: function () {
+    if board.currentColor == "red" { board.currentColor = "black"; }
+    else {board.currentColor = "red"; }
+  },
+}
+
 
 //Controller
-
-View.button.on("click",function () {
-  var square_obj = board.addChip(this.column_id) || alert("You cannot add a chip here. The column is full.")
-  if board.status
-    View.display_win(square_obj.color)
+var board = new Board(6,7);
+View.buttons.on("click",function () {
+  var id = this.attr("id").match(/\d+/)
+  if(board.addChip(id)) {
+    var added_chip = board.addChip(id); }
   else {
-    Board.currentColor = opposite color;
-    View.updateBoard(square_obj.id,square_obj.color); }
+    View.displayColumnFull(); }
 
+  View.updateBoard(added_chip.id,added_chip.color);
+  if(board.won_status(added_chip))
+    View.display_win(added_chip.color)
+  else {
+    board.switchPlayerColor();
+    View.switchPlayerColor(board.currentColor); }
 }
+
+
+// $(document).ready(){ initialize }
+
+// function initialize(){
+//   var board = new Board
+//   var view = new View
+//   var controller = new Controller( board, view )
+// }
+
+// function Controller( board, view ){
+//   this.board = board
+//   this.view = view
+// }
+
+
+
+
