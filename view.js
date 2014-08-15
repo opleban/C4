@@ -1,9 +1,6 @@
 View = {
 
   updateBoard: function(square_id, color){
-    console.log("made it to update Board")
-    console.log(square_id)
-    console.log(color)
     $('#'+square_id).addClass(color);
   },
 

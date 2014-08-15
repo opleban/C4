@@ -25,11 +25,12 @@ function Board (height,width) {
 }
 
 Board.prototype = {
-  addChip: function (column) {
+  addChip: function (col_num) {
     for (i=(this.height-1);i>=0;i--) {
-      if (this.cells[i][column].color == "") {
-        this.cells[i][column].color = this.currentColor;
-        return this.cells[i][column]; }
+      var current_cell = this.cells[i][col_num]
+      if (current_cell.color == "") {
+        current_cell.color = this.currentColor;
+        return current_cell; }
     }
     return null;
   },

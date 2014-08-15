@@ -4,7 +4,6 @@ var board = new Board(6,7);
 View.buttons.on("click",function () {
 
   var col_id = $(this).attr("id").match(/\d+/);
-  console.log(col_id)
   var added_chip = board.addChip(col_id);
   if(!added_chip) {
     View.displayColumnFull(); }
