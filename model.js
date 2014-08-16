@@ -48,8 +48,8 @@ Board.prototype = {
   },
 
   switchPlayerColor: function () {
-    if(board.currentColor == "red") { board.currentColor = "black"; }
-    else {board.currentColor = "red"; }
+    if(this.currentColor == "red") {this.currentColor = "black"; }
+    else {this.currentColor = "red"; }
   },
 
   sameColor: function(row, col, chip) {
@@ -66,7 +66,6 @@ Board.prototype = {
         counter ++
       else
         break
-      // this.sameColor(r, col) ? counter++ : break;
 
       if (counter >= 4)
         return true;
