@@ -62,6 +62,7 @@ View.computerButton.on("click",function() {
 });
 
 View.newGameButton.on("click",function() {
+  Timer.breakCountdown();
   board.clear();
   View.clear();
   dumbComputerPlaying = false;

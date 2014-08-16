@@ -43,7 +43,6 @@ Board.prototype = {
     }
   },
 
-
   indexOf: function(id) {
     return [Math.floor(id/this.width),id%this.width];
   },
@@ -67,7 +66,6 @@ Board.prototype = {
         counter ++
       else
         break
-      // this.sameColor(r, col) ? counter++ : break;
 
       if (counter >= 4)
         return true;

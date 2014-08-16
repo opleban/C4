@@ -28,7 +28,7 @@ View = {
   clear: function() {
     $("td").html("");
     $("#game_over").css({"position": "absolute" , "top": "600px", "left": "300px", "width": "2px","height": "2px"});
-    $("#message").html("Start new game by clicking below.");
+    $("#message").html("It's red's turn.");
   },
 
   disableStart: function(){
